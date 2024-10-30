@@ -1,0 +1,7 @@
+spring.application.name=ecommerce-multivendor
+
+
+
+spring.datasource.url = jdbc:mysql://localhost:3306/tradingPlatfrom
+spring.datasource.username = root
+spring.datasource.password = 2202phoaT
