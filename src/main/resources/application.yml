@@ -1,7 +1,13 @@
-spring.application.name=ecommerce-multivendor
+spring:
+  application:
+    name: ecommerce-Multivendor
 
 
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerceMultivendor
+    username: root
+    password: 2202phoaT
+    dll-auto: update
 
-spring.datasource.url = jdbc:mysql://localhost:3306/tradingPlatfrom
-spring.datasource.username = root
-spring.datasource.password = 2202phoaT
+server:
+  port: 8080
