@@ -1,6 +1,17 @@
 spring:
   application:
     name: ecommerce-Multivendor
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tranqphoat@gmail.com
+    password: hamo tajp zwer rwxr
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 
   datasource:
