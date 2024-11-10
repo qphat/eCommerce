@@ -43,7 +43,7 @@ public class AuthServiceImp implements AuthService {
 
     @Override
     public void sentLoginOtp(String email) throws MessagingException {
-        String SIGN_PREFIX = "signin_";
+        String SIGN_PREFIX = "signing_";
 
         if(email.startsWith(SIGN_PREFIX)) {
             email = email.substring(SIGN_PREFIX.length());
@@ -114,7 +114,7 @@ public class AuthServiceImp implements AuthService {
         String username = loginRequest.getEmail();
         String otp = loginRequest.getOtp();
 
-        Authentication auth = authentacate(username, otp);
+        Authentication auth = authenticate(username, otp);
         SecurityContextHolder.getContext().setAuthentication(auth);
 
         String token = jwtTokenProvider.generateToken(auth);
@@ -132,7 +132,7 @@ public class AuthServiceImp implements AuthService {
 
     }
 
-    private Authentication authentacate(String username, String otp) {
+    private Authentication authenticate(String username, String otp) {
         UserDetails userDetails = customerServiceImp.loadUserByUsername(username);
         if(userDetails == null) {
             throw new BadCredentialsException("Invalid username or password");

@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.koomi</groupId>
-    <artifactId>ecommerce-multivendor</artifactId>
+    <artifactId>ecommerce</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ecommerce multivendor</name>
     <description>ecommerce multivendor</description>

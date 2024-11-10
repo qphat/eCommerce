@@ -3,7 +3,6 @@ package com.koomi.controller;
 
 import com.koomi.domain.USER_ROLE;
 import com.koomi.entity.VerificationCode;
-import com.koomi.repository.UserRepository;
 import com.koomi.request.LoginRequest;
 import com.koomi.request.SignupRequest;
 import com.koomi.response.APIResponse;
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final UserRepository userRepository;
+
     private final AuthService authService;
 
     @PostMapping("v1/signup")
@@ -49,7 +48,7 @@ public class AuthController {
     }
 
     @PostMapping("v1/signing")
-    public ResponseEntity<AuthResponse> loginHandle(@RequestBody LoginRequest req) throws Exception {
+    public ResponseEntity<AuthResponse> loginHandle(@RequestBody LoginRequest req) {
 
         AuthResponse response =  authService.signing(req);
 
