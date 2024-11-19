@@ -6,6 +6,7 @@ import com.koomi.domain.USER_ROLE;
 import com.koomi.entity.Address;
 import com.koomi.entity.BankDetails;
 import com.koomi.entity.Seller;
+import com.koomi.entity.SellerReport;
 import com.koomi.repository.AddressRepository;
 import com.koomi.repository.SellerRepository;
 import com.koomi.service.SellerService;
@@ -80,7 +81,7 @@ public class SellerServiceImp implements SellerService {
     }
 
     @Override
-    public Seller updateSeller(Seller seller) {
+    public Seller updateSeller(Long id, Seller seller) {
         Seller existingSeller = sellerRepository.findById(seller.getId())
                 .orElseThrow(() -> new RuntimeException("Seller not found with id: " + seller.getId()));
 
@@ -155,5 +156,10 @@ public class SellerServiceImp implements SellerService {
         seller.setAccountStatus(accountStatus);
         return sellerRepository.save(seller);
 
+    }
+
+    @Override
+    public SellerReport getSellerReport(Seller seller) {
+        return null;
     }
 }

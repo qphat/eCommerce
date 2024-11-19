@@ -7,6 +7,7 @@ import com.koomi.request.LoginRequest;
 import com.koomi.request.SignupRequest;
 import com.koomi.response.APIResponse;
 import com.koomi.response.AuthResponse;
+import com.koomi.response.LoginOtpRequest;
 import com.koomi.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,9 @@ public class AuthController {
     }
 
     @PostMapping("v1/send/login-signup-otp")
-    public ResponseEntity<APIResponse> sendOtpHandle(@RequestBody VerificationCode req) throws Exception {
+    public ResponseEntity<APIResponse> sendOtpHandle(@RequestBody LoginOtpRequest req) throws Exception {
 
-        authService.sentLoginOtp(req.getEmail());
+        authService.sentLoginOtp(req.getEmail(), req.getRole());
 
         APIResponse response = new APIResponse();
         response.setMessage("OTP sent successfully");

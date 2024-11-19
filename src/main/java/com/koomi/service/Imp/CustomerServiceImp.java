@@ -22,10 +22,10 @@ public class CustomerServiceImp implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final SellerRepository sellerRepository;
+    private static final String SELLER_PREFIX = "seller_";
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String SELLER_PREFIX = "seller_";
         if(username.startsWith(SELLER_PREFIX)) {
             String actualUsername = username.substring(SELLER_PREFIX.length());
             Seller seller = sellerRepository.findByEmail(actualUsername);

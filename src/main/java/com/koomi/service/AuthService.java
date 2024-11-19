@@ -1,5 +1,6 @@
 package com.koomi.service;
 
+import com.koomi.domain.USER_ROLE;
 import com.koomi.request.LoginRequest;
 import com.koomi.request.SignupRequest;
 import com.koomi.response.AuthResponse;
@@ -10,5 +11,5 @@ public interface AuthService {
 
     AuthResponse signing(LoginRequest loginRequest);
 
-    void sentLoginOtp(String email) throws MessagingException;
+    void sentLoginOtp(String email, USER_ROLE role) throws MessagingException;
 }

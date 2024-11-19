@@ -3,9 +3,11 @@ package com.koomi.service.Imp;
 import com.koomi.config.JwtTokenProvider;
 import com.koomi.domain.USER_ROLE;
 import com.koomi.entity.Cart;
+import com.koomi.entity.Seller;
 import com.koomi.entity.User;
 import com.koomi.entity.VerificationCode;
 import com.koomi.repository.CartRepository;
+import com.koomi.repository.SellerRepository;
 import com.koomi.repository.UserRepository;
 import com.koomi.repository.VerificationCodeRepository;
 import com.koomi.request.LoginRequest;
@@ -40,17 +42,26 @@ public class AuthServiceImp implements AuthService {
     private final VerificationCodeRepository verificationCodeRepository;
     private final EmailService emailService;
     private final CustomerServiceImp customerServiceImp;
+    private final SellerRepository sellerRepository;
 
     @Override
-    public void sentLoginOtp(String email) throws MessagingException {
+    public void sentLoginOtp(String email, USER_ROLE role) throws MessagingException {
         String SIGN_PREFIX = "signing_";
 
         if(email.startsWith(SIGN_PREFIX)) {
             email = email.substring(SIGN_PREFIX.length());
 
-            User user = userRepository.findByEmail(email);
-            if(user == null) {
-                throw new RuntimeException("User not found");
+            if(role.equals(USER_ROLE.SELLER)) {
+                Seller seller = sellerRepository.findByEmail(email);
+                if(seller == null) {
+                    throw new RuntimeException("Seller not found");
+                }
+            }
+            else {
+                User user = userRepository.findByEmail(email);
+                if(user == null) {
+                    throw new RuntimeException("user not found");
+                }
             }
         }
 
